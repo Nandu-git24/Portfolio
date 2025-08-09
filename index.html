@@ -196,7 +196,7 @@ footer {
             </div>
             <div class="col-md-8">
                 <h2>About Me</h2>
-                <p>I’m <strong>Tadi Nanda Kishore</strong>, a passionate web developer who thrives on crafting modern, responsive, and user-focused websites. With experience in both front-end and back-end development, I specialize in turning ideas into interactive digital solutions that combine functionality with great design. I love exploring new technologies, solving complex problems, and building projects that make an impact. My approach blends creativity with precision, ensuring every line of code moves the project closer to excellence.</p>
+                <p>I’m <strong>Tadi Nanda Kishore</strong>, a passionate web developer who thrives on crafting modern, responsive, and user-focused websites...</p>
                 <h5>Skills</h5>
                 <p>HTML</p>
                 <div class="progress mb-2"><div class="progress-bar bg-success" style="width:90%"></div></div>
@@ -216,7 +216,7 @@ footer {
         <div class="row g-4">
             <div class="col-md-4 project-card" data-aos="fade-up">
                 <div class="card shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800" class="card-img-top">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800" class="card-img-top" alt="Portfolio Website">
                     <div class="card-body">
                         <h5 class="card-title">Personal Portfolio Website</h5>
                         <p class="card-text">A responsive and animated portfolio showcasing skills and projects.</p>
@@ -226,7 +226,7 @@ footer {
             </div>
             <div class="col-md-4 project-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="card shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=800" class="card-img-top">
+                    <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=800" class="card-img-top" alt="E-commerce Store">
                     <div class="card-body">
                         <h5 class="card-title">E-commerce Store</h5>
                         <p class="card-text">An online store with product listings and cart functionality.</p>
@@ -236,7 +236,7 @@ footer {
             </div>
             <div class="col-md-4 project-card" data-aos="fade-up" data-aos-delay="400">
                 <div class="card shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800" class="card-img-top">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800" class="card-img-top" alt="Weather App">
                     <div class="card-body">
                         <h5 class="card-title">Weather App</h5>
                         <p class="card-text">A weather forecasting app with real-time updates using the OpenWeather API.</p>
@@ -248,15 +248,36 @@ footer {
     </div>
 </section>
 
+<!-- Contact -->
 <section id="contact" class="py-5 text-white">
     <div class="container" data-aos="fade-up">
         <h2 class="text-center mb-4">Contact Me</h2>
         <div class="contact-card">
+            <!-- Contact Form -->
+            <form id="contactForm">
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-control" id="message" rows="4" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Send Message</button>
+            </form>
+
+            <hr class="my-4">
+
+            <!-- Contact Info List -->
             <ul class="contact-list">
                 <li><i class="fas fa-envelope" style="color: #ffd700;"></i><a href="mailto:nandakishore24myt@gmail.com">nandakishore24myt@gmail.com</a></li>
                 <li><i class="fas fa-phone" style="color: #00ff99;"></i>+91-6302346312</li>
                 <li><i class="fas fa-globe" style="color: #00cfff;"></i><a href="https://www.nandakishore.dev" target="_blank">Portfolio Website</a></li>
-                <li><i class="fab fa-linkedin" style="color: #0A66C2;"></i><a href="https://www.linkedin.com/in/tadi-nanda-kishore" target="_blank">linkedin</a></li>
+                <li><i class="fab fa-linkedin" style="color: #0A66C2;"></i><a href="https://www.linkedin.com/in/tadi-nanda-kishore" target="_blank">LinkedIn</a></li>
                 <li><i class="fab fa-github" style="color: #fff;"></i><a href="https://github.com/Nandu-git24" target="_blank">github.com/tadinandakishore</a></li>
                 <li><i class="fas fa-map-marker-alt" style="color: #ff4b5c;"></i>Hyderabad | India</li>
             </ul>
@@ -303,6 +324,32 @@ function typeEffect() {
     }
 }
 typeEffect();
+
+// Contact Form Validation
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let message = document.getElementById("message").value.trim();
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (name === "" || email === "" || message === "") {
+        alert("Please fill in all fields.");
+        return;
+    }
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+    if (message.length < 10) {
+        alert("Message must be at least 10 characters long.");
+        return;
+    }
+
+    alert("Message sent successfully!");
+    this.reset();
+});
 </script>
 </body>
 </html>
